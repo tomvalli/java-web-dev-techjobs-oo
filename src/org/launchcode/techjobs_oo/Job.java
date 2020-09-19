@@ -20,4 +20,11 @@ public class Job {
 
     // TODO: Add getters for each field EXCEPT nextId. Add setters for each field EXCEPT nextID
     //  and id.
+
+    // TODO: -Review Sally’s code in the Employer class to learn how to assign a unique ID.
+    //  -Add getters, setters, and custom methods as needed to the Location, CoreCompetency, and PositionType classes.
+    //  -Complete the Job class using what you learned in steps 1 and 2.
+    //  -Use unit testing to verify the constructors and equals methods for the Job class.
+    //  -Use TDD to design and code a custom toString method for the Job class.
+    //  -Use inheritance to DRY the code within Employer, Location, CoreCompetency, and PositionType
 }
