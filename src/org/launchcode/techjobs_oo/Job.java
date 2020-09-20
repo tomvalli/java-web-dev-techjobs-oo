@@ -1,5 +1,6 @@
 package org.launchcode.techjobs_oo;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class Job {
@@ -86,14 +87,30 @@ public class Job {
 
     @Override
     public String toString() {
-        return "\n" +
-                "id=" + id +
-                "\nname='" + name +
-                "\nemployer=" + employer +
-                "\nlocation=" + location +
-                "\npositionType=" + positionType +
-                "\ncoreCompetency=" + coreCompetency +
-                '\n';
+        String output = "";
+        String[] labels = {"ID: ", "Name: ", "Employer: ", "Location: ", "Position Type: ", "Core Competency: "};
+        String[] values = {Integer.toString(this.id), this.name, this.employer.getValue(), this.location.getValue(), this.positionType.getValue(), this.coreCompetency.getValue()};
+
+        for (int i = 0; i < values.length; i++) {
+            output += "\n" + labels[i];
+            if (values[i].equals("")) {
+                output += "Data not available";
+            } else {
+                output += values[i];
+            }
+        }
+
+        return output;
+
+
+//        return "\n" +
+//                "ID: " + id +
+//                "\nName: " + name +
+//                "\nEmployer: " + employer +
+//                "\nLocation: " + location +
+//                "\nPosition Type: " + positionType +
+//                "\nCore Competency: " + coreCompetency +
+//                '\n';
     }
 
     // TODO: Add custom equals and hashCode methods. Consider two Job objects "equal" when their id fields

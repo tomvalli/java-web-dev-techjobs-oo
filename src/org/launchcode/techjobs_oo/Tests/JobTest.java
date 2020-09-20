@@ -60,9 +60,32 @@ public class JobTest {
     public void testToStringLabels() {
         Job job6 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
         String jobString = job6.toString();
+        //arr of job labels:
+        String[] labels = {"ID: ", "Name: ", "Employer: ", "Location: ", "Position Type: ", "Core Competency: "};
+        //arr of the values corresponding to those labels
+        String[] values = {Integer.toString(job6.getId()), job6.getName(), job6.getEmployer().getValue(), job6.getLocation().getValue(), job6.getPositionType().getValue(), job6.getCoreCompetency().getValue()};
 
-        assertTrue(jobString.indexOf("ID: ") == 1);
-        assertTrue(jobString.indexOf)
+        for (int i = 0; i < values.length; i++) {
+            int labelIndex = jobString.indexOf(labels[i]);
+            int labelLength = labels[i].length();
+            int valueIndexActual = jobString.indexOf(values[i]);
+            int valueIndexCalculated = labelIndex + labelLength;
+            assertEquals('\n', jobString.charAt(labelIndex - 1));
+            assertEquals(valueIndexActual, valueIndexCalculated, 0);
+        }
+    }
 
+    @Test
+    public void testForMessageInEmptyField() {
+        Job job7 = new Job("", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        String jobString = job7.toString();
+        String emptyFieldName = "Name: ";
+        assertEquals(jobString.indexOf("Data not available"), jobString.indexOf("Name: ") + emptyFieldName.length());
+    }
+
+    @Test
+    public void testEmptyJobToStringError() {
+        Job job8 = new Job();
+        assertEquals(job8.toString(), "OOPS! This job does not seem to exist.");
     }
 }
