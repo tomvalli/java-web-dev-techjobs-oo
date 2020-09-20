@@ -47,5 +47,22 @@ public class JobTest {
         assertFalse(job4.equals(job5));
     }
 
+    @Test
+    public void testToStringBlankLines() {
+        Job job6 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        String jobString = job6.toString();
 
+        assertEquals(jobString.indexOf("\n"), 0, 0);
+        assertEquals(jobString.lastIndexOf("\n"), (jobString.length() - 1), 0);
+    }
+
+    @Test
+    public void testToStringLabels() {
+        Job job6 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        String jobString = job6.toString();
+
+        assertTrue(jobString.indexOf("ID: ") == 1);
+        assertTrue(jobString.indexOf)
+
+    }
 }

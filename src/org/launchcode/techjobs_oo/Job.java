@@ -84,6 +84,18 @@ public class Job {
         return Objects.hash(id);
     }
 
+    @Override
+    public String toString() {
+        return "\n" +
+                "id=" + id +
+                "\nname='" + name +
+                "\nemployer=" + employer +
+                "\nlocation=" + location +
+                "\npositionType=" + positionType +
+                "\ncoreCompetency=" + coreCompetency +
+                '\n';
+    }
+
     // TODO: Add custom equals and hashCode methods. Consider two Job objects "equal" when their id fields
     //  match.
 
