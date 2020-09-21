@@ -94,7 +94,8 @@ public class Job {
     @Override
     public String toString() {
         String[] labels = {"ID: ", "Name: ", "Employer: ", "Location: ", "Position Type: ", "Core Competency: "};
-        String[] values = {Integer.toString(this.id), this.name, this.employer.getValue(), this.location.getValue(), this.positionType.getValue(), this.coreCompetency.getValue()};
+        String[] values = {Integer.toString(this.id), this.name, this.employer.getValue(),
+                            this.location.getValue(), this.positionType.getValue(), this.coreCompetency.getValue()};
         StringBuilder output = new StringBuilder("\n" + labels[0] + values[0]);
 
         boolean idOnly = true;
@@ -115,28 +116,6 @@ public class Job {
         if(idOnly) { output = new StringBuilder("OOPS! This job does not seem to exist."); }
 
         return output.toString();
-
-
-//        return "\n" +
-//                "ID: " + id +
-//                "\nName: " + name +
-//                "\nEmployer: " + employer +
-//                "\nLocation: " + location +
-//                "\nPosition Type: " + positionType +
-//                "\nCore Competency: " + coreCompetency +
-//                '\n';
     }
-
-    // TODO: Add custom equals and hashCode methods. Consider two Job objects "equal" when their id fields
-    //  match.
-
-    // TODO: Add getters for each field EXCEPT nextId. Add setters for each field EXCEPT nextID
-    //  and id.
-
-    // TODO: -Review Sally’s code in the Employer class to learn how to assign a unique ID.
-    //  -Add getters, setters, and custom methods as needed to the Location, CoreCompetency, and PositionType classes.
-    //  -Complete the Job class using what you learned in steps 1 and 2.
-    //  -Use unit testing to verify the constructors and equals methods for the Job class.
-    //  -Use TDD to design and code a custom toString method for the Job class.
     //  -Use inheritance to DRY the code within Employer, Location, CoreCompetency, and PositionType
 }
