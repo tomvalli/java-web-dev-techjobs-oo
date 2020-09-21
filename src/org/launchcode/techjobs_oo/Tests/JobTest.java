@@ -86,6 +86,6 @@ public class JobTest {
     @Test
     public void testEmptyJobToStringError() {
         Job job8 = new Job();
-        assertEquals(job8.toString(), "OOPS! This job does not seem to exist.");
+        assertEquals("OOPS! This job does not seem to exist.", job8.toString());
     }
 }

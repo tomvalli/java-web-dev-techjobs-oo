@@ -13,10 +13,16 @@ public class Job {
     private Location location;
     private PositionType positionType;
     private CoreCompetency coreCompetency;
+    private final String noData = "Data not available";
 
     public Job() {
         this.id = nextId;
         nextId++;
+        this.name = noData;
+        this.employer = new Employer(noData);
+        this.location = new Location(noData);
+        this.positionType = new PositionType(noData);
+        this.coreCompetency = new CoreCompetency(noData);
     }
 
     public Job(String name, Employer employer, Location location, PositionType positionType, CoreCompetency coreCompetency) {
@@ -87,20 +93,28 @@ public class Job {
 
     @Override
     public String toString() {
-        String output = "";
         String[] labels = {"ID: ", "Name: ", "Employer: ", "Location: ", "Position Type: ", "Core Competency: "};
         String[] values = {Integer.toString(this.id), this.name, this.employer.getValue(), this.location.getValue(), this.positionType.getValue(), this.coreCompetency.getValue()};
+        StringBuilder output = new StringBuilder("\n" + labels[0] + values[0]);
 
-        for (int i = 0; i < values.length; i++) {
-            output += "\n" + labels[i];
-            if (values[i].equals("")) {
-                output += "Data not available";
-            } else {
-                output += values[i];
+        boolean idOnly = true;
+        for (int i = 1; i < values.length; i++) {
+            output.append("\n").append(labels[i]);
+            if (!values[i].equals(noData)) {
+                output.append(values[i]);
+                idOnly = false;
+            }
+            if (values[i].isEmpty()) {
+                output.append(noData);
+            }
+            if (i == values.length-1) {
+                output.append("\n");
             }
         }
 
-        return output;
+        if(idOnly) { output = new StringBuilder("OOPS! This job does not seem to exist."); }
+
+        return output.toString();
 
 
 //        return "\n" +
